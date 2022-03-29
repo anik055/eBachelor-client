@@ -1,0 +1,35 @@
+.image {
+  height: 200px;
+  width: 200px;
+}
+
+.name {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+  width: 200px;
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.price {
+  margin-top: 15px;
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: bold;
+  color: rgb(109, 95, 109);
+}
+
+.product {
+  margin: 10px;
+}
+
+.button {
+  width: 100%;
+  border: none;
+  background-color: #333;
+  color: rgb(221, 219, 219);
+}

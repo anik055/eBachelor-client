@@ -1,0 +1,27 @@
+.sidebar{
+    background:white;
+    position: fixed;
+    height: 100%;
+    width: auto;
+    padding-top:3%;
+    padding-right: 10px;
+    /* margin: 2rem; */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(160, 158, 158, 0.75);
+}
+.sidebar li{
+    margin-bottom: 2rem;
+    text-decoration: none !important;
+    list-style: none;
+    align-items: left !important;
+}
+.color{
+    color: black ;
+    font-size: 15px;
+}
+span{
+    color: black;
+}
+.sidebar svg{
+    margin-right: 5px;
+}
