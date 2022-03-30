@@ -10,7 +10,7 @@ function IsAdmin() {
   formData.append("email", loggedInUser.email);
 
   useEffect(() => {
-    fetch("http://localhost:5050/isAdmin", {
+    fetch("https://ebachelor.herokuapp.com/isAdmin", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email: loggedInUser.email }),

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../Login/Login/AuthContext";
 
@@ -7,7 +6,6 @@ import "./navbar.css";
 
 function Navbar() {
   const { loggedInUser, logout } = useAuth();
-  // console.log(typeof loggedInUser)
   const toggleButton = () => {
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
     navbarLinks.classList.toggle("active");
@@ -16,7 +14,11 @@ function Navbar() {
   return (
     <div className="navigation">
       <nav className="navbar">
-        <NavLink style={{textDecoration: "none", color: "white"}} to="/" className="brand-title">
+        <NavLink
+          style={{ textDecoration: "none", color: "white" }}
+          to="/"
+          className="brand-title"
+        >
           <h4 className="brand-logo">eBachelor</h4>
         </NavLink>
         <a onClick={toggleButton} className="toggle-button">
@@ -32,9 +34,6 @@ function Navbar() {
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
-            {/* <li>
-              <Link to="/dashboard">Admin</Link>
-            </li> */}
             <li>
               {loggedInUser ? (
                 <Link onClick={logout} to="/login">

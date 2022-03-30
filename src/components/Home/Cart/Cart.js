@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -6,12 +6,9 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import ModalCart from "./ModalCart";
 
 function Cart(props) {
-
   const cart = props.cart;
   let subtotal = 0;
   const handleClick = () => {};
-
-
 
   return (
     <div>
@@ -53,7 +50,7 @@ function Cart(props) {
         </div>
       </div>
       <div className="cart2">
-        <ModalCart subtotal={subtotal} cart={cart} />
+        <ModalCart delete={props.delete} subtotal={subtotal} cart={cart} />
         {/* <div className="cart-compo">
           <div>
             <IconButton aria-label="cart">

@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 
 const style = {
   position: "absolute",
@@ -19,8 +18,7 @@ const style = {
 };
 
 export default function Modals(props) {
-  const { id } = props;
-  console.log(id);
+  const { id, updateProduct } = props;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,7 +28,6 @@ export default function Modals(props) {
   const handleBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = e.target.value;
-    console.log(newInfo);
     setInfo(newInfo);
   };
   const handleFileChange = (e) => {
@@ -39,36 +36,20 @@ export default function Modals(props) {
   };
 
   const handleSubmit = (e) => {
+    updateProduct(info.price);
     const updatedInfo = {
       price: info.price,
       description: info.description,
     };
-    console.log(JSON.stringify(updatedInfo));
 
-    fetch(`http://localhost:5050/update/${id}`, {
+    fetch(`https://ebachelor.herokuapp.com/update/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedInfo),
     })
-      .then(async (response) => {
-        try {
-          console.log(response);
-          const data = await response.json();
-          console.log("response data?", data);
-        } catch (error) {
-          console.log("Error happened here!", error);
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        alert("product added successfully");
-        for (let i = 0; i < 5; i++) {
-          document.getElementsByClassName("form-control")[i].value = "";
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      .then((response) => response.json())
+      .then((data) => {})
+      .catch((error) => {});
     e.preventDefault();
   };
 
@@ -113,7 +94,11 @@ export default function Modals(props) {
                     placeholder="Enter price"
                   />
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button
+                  onClick={handleClose}
+                  type="submit"
+                  className="btn btn-primary"
+                >
                   Submit
                 </button>
               </form>

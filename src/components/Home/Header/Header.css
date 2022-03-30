@@ -1,7 +1,4 @@
 .header-container {
-
-    position:relative;
-    /* background-image: url('../../../images/chairBg.png'); */
-    background-size: cover;
-    /* margin-bottom:100px; */
+  position: relative;
+  background-size: cover;
 }

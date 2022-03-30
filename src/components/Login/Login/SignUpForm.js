@@ -1,13 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
-import React from 'react'
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext";
 
 export default function SignupForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agree, setAgree] = useState("");
 
@@ -38,11 +38,7 @@ export default function SignupForm() {
   }
 
   return (
-    <form
-      className="login-form"
-
-      onSubmit={handleSubmit}
-    >
+    <form className="login-form" onSubmit={handleSubmit}>
       <input
         className="register-form"
         type="text"
@@ -88,7 +84,7 @@ export default function SignupForm() {
         value={agree}
         onChange={(e) => setAgree(e.target.value)}
       />
-      <span>  I agree to the Terms &amp; Conditions</span>
+      <span> I agree to the Terms &amp; Conditions</span>
 
       <button class="submit-btn" disabled={loading} type="submit">
         <span>Submit Now</span>

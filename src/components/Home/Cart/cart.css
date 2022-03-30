@@ -6,7 +6,6 @@
 }
 
 .title{
-    /* margin-top: 80px; */
     padding-top: 45px;
     padding-bottom:20px;
     text-align: center;
@@ -31,7 +30,6 @@ border:none;
 .delete{
 
     color:rgb(102, 101, 101);
-    /* background-color: #333; */
 }
 
 .cart-compo{

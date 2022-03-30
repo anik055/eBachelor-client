@@ -8,16 +8,9 @@ import {
   faHome,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import { faFileAlt} from "@fortawesome/free-regular-svg-icons";
+import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 
-import { useAuth } from "../../Login/Login/AuthContext";
-
-const Sidebar = ({isAdmin}) => {
-  // const { isAdmin } = useAuth();
-  // console.log(isAdmin());
-
-
-
+const Sidebar = ({ isAdmin }) => {
   return (
     <div className="sidebar">
       <ul className="sidee">
@@ -35,18 +28,10 @@ const Sidebar = ({isAdmin}) => {
         </li>
         <li>
           <Link to="orders" className="text-white">
-            <FontAwesomeIcon className="color" icon={faCog} />{" "}
-            <span>orders</span>
+            <FontAwesomeIcon className="color" icon={faFileAlt} />{" "}
+            <span>Orders</span>
           </Link>
         </li>
-        {/* {!isAdmin && (
-          <li>
-            <Link to="/review">
-              <FontAwesomeIcon className="color" icon={faFileAlt} />{" "}
-              <span>Add Review</span>
-            </Link>
-          </li>
-        )} */}
         {isAdmin && (
           <div>
             <li>
@@ -55,7 +40,6 @@ const Sidebar = ({isAdmin}) => {
                 <span>Add Admin</span>
               </Link>
             </li>
-            {/*   */}
             <li>
               <Link to="addProduct" className="text-white">
                 <FontAwesomeIcon className="color" icon={faFileAlt} />{" "}

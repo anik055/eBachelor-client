@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
 import "../Dashboard/mainDash.css";
 
 const AddProduct = () => {
@@ -20,13 +19,7 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const product = {
-    //   name: info.name,
-    //   description: info.description,
-    //   price: info.price,
-    //   category: info.category,
-    //   file: file,
-    // };
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("name", info.name);
@@ -34,12 +27,8 @@ const AddProduct = () => {
     formData.append("price", info.price);
     formData.append("category", info.category);
 
-    fetch("http://localhost:5050/addProduct", {
+    fetch("https://ebachelor.herokuapp.com/addProduct", {
       method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify(product),
       body: formData,
     })
       .then((response) => response.json())

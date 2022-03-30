@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useAuth } from "../../Login/Login/AuthContext";
 import "./showproduct.css";
-import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
-// import * as React from 'react';
+
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
@@ -16,7 +15,7 @@ const ShowProduct = () => {
   const [allCat, setAllCat] = useState("");
   const [category, setCategory] = useState("all");
   const { loggedInUser } = useAuth();
-
+  const profileEmail = loggedInUser && loggedInUser.email;
 
   const handleClick = (e) => {
     setCategory(e.target.value);
@@ -27,7 +26,7 @@ const ShowProduct = () => {
   const deleteFromCart = (event, id) => {
     const others = cart.filter((pd) => pd._id !== id);
     setCart(others);
-    fetch(`http://localhost:5050/deleteCart/${id}`, {
+    fetch(`https://ebachelor.herokuapp.com/deleteCart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -50,7 +49,7 @@ const ShowProduct = () => {
       setCart(newCart);
 
       console.log(JSON.stringify(sameProduct));
-      fetch(`http://localhost:5050/updateCart/${id}`, {
+      fetch(`https://ebachelor.herokuapp.com/updateCart/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(sameProduct),
@@ -66,7 +65,7 @@ const ShowProduct = () => {
       product.email = loggedInUser.email;
       const newCart = [...cart, product];
       setCart(newCart);
-      const url = `http://localhost:5050/addToCart`;
+      const url = `https://ebachelor.herokuapp.com/addToCart`;
 
       fetch(url, {
         method: "POST",
@@ -81,10 +80,10 @@ const ShowProduct = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5050/cart", {
+    fetch("https://ebachelor.herokuapp.com/cart", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ email: loggedInUser.email }),
+      body: JSON.stringify({ email: profileEmail }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -94,7 +93,7 @@ const ShowProduct = () => {
   }, [loggedInUser]);
 
   useEffect(() => {
-    fetch(`http://localhost:5050/products/${category}`)
+    fetch(`https://ebachelor.herokuapp.com/products/${category}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -103,7 +102,7 @@ const ShowProduct = () => {
   }, [category]);
 
   useEffect(() => {
-    fetch("http://localhost:5050/products")
+    fetch("https://ebachelor.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

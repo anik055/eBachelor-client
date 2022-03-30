@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import "./order.css"
-import { useAuth } from "../../Login/Login/AuthContext";
+import "./order.css";
+
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 const Orders = ({ orders, isAdmin }) => {
   const [status, setStatus] = useState("pending");
-  // const { isAdmin } = useAuth();
-  console.log(orders);
 
   const handleBlur = (event, id) => {
     event.target.parentNode.parentNode.previousElementSibling.innerHTML =
@@ -18,7 +16,7 @@ const Orders = ({ orders, isAdmin }) => {
     const statuss = {
       status: event.target.value,
     };
-    fetch(`http://localhost:5050/updateStatus/${id}`, {
+    fetch(`https://ebachelor.herokuapp.com/updateStatus/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(statuss),
@@ -34,17 +32,11 @@ const Orders = ({ orders, isAdmin }) => {
             <th className="text-secondary text-left" scope="col">
               Sr No
             </th>
-            {/* <th className="text-secondary" scope="col">
-            Name
-          </th> */}
             {isAdmin && (
               <th className="text-secondary" scope="col">
                 Email
               </th>
             )}
-            {/* <th className="text-secondary" scope="col">
-            Service
-          </th> */}
             <th className="text-secondary" scope="col">
               Price
             </th>
@@ -63,9 +55,7 @@ const Orders = ({ orders, isAdmin }) => {
           {orders.map((order, index) => (
             <tr>
               <td>{index + 1}</td>
-              {/* <td>{order.Shipment.name}</td> */}
               {isAdmin && <td>{order.email}</td>}
-              {/* <td>{order.product.name}</td> */}
               <td>${order.subtotal}</td>
               <td>{order.status}</td>
               {isAdmin && (
@@ -90,7 +80,7 @@ const Orders = ({ orders, isAdmin }) => {
           ))}
         </tbody>
       </table>
-      {orders[0] && (
+      {!orders[0] && (
         <div>
           <Box className="spin" sx={{ display: "flex" }}>
             <CircularProgress />

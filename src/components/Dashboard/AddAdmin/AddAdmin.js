@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
 import "../Dashboard/mainDash.css";
 const AddAdmin = () => {
+
   const [info, setInfo] = useState({});
   const handleBlur = (e) => {
     const newInfo = { ...info };
@@ -11,14 +11,11 @@ const AddAdmin = () => {
   };
 
   const handleSubmit = (event) => {
-    // const formData = new FormData();
-    // formData.append("email", info.email);
-    // console.log(info);
     const formData = new FormData();
     formData.append("email", info.email);
     console.log(info);
 
-    fetch("http://localhost:5050/addAdmin", {
+    fetch("https://ebachelor.herokuapp.com/addAdmin", {
       method: "POST",
       body: formData,
     })
@@ -33,7 +30,6 @@ const AddAdmin = () => {
 
     event.preventDefault();
     document.getElementById("input").value = "";
-    // document.getElementsByTagName('input').value = '';
     console.log(document.getElementById("input").value);
   };
   return (

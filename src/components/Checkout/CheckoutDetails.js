@@ -9,6 +9,7 @@ function CheckoutDetails() {
   const [cart, setCart] = useState([]);
   const [info, setInfo] = useState({});
   const [success, setSuccess] = useState(false);
+  const profileEmail = loggedInUser && loggedInUser.email;
 
   const handleBlur = (e) => {
     const newInfo = { ...info };
@@ -33,7 +34,7 @@ function CheckoutDetails() {
 
     console.log(submitInfo);
     console.log(JSON.stringify(submitInfo));
-    fetch("http://localhost:5050/addNewOrder", {
+    fetch("https://ebachelor.herokuapp.com/addNewOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +44,7 @@ function CheckoutDetails() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        fetch("http://localhost:5050/deleteWholeCart/", {
+        fetch("https://ebachelor.herokuapp.com/deleteWholeCart/", {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -53,19 +54,23 @@ function CheckoutDetails() {
             alert("Success");
           })
           .catch((error) => {});
-        // alert("you have ordered successfully");
       })
       .catch((error) => {});
     e.preventDefault();
   };
 
   useEffect(() => {
-    fetch("http://localhost:5050/cart")
+    fetch("https://ebachelor.herokuapp.com/cart", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: profileEmail }),
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setCart(data);
       });
-  }, []);
+  }, [loggedInUser]);
 
   return (
     <div>
@@ -110,7 +115,7 @@ function CheckoutDetails() {
                 className="form-control"
                 type=""
                 name="phone"
-                value=""
+                value={info.phone}
               />
             </div>
             <button className="btn btn-primary" type="submit">
@@ -121,7 +126,7 @@ function CheckoutDetails() {
       )}
       {success && (
         <div className="thank">
-          <h1>thanks for your order</h1>
+          <h1>Thanks for your order!</h1>
         </div>
       )}
     </div>
