@@ -3,12 +3,13 @@ import { initializeApp } from "firebase/app";
 
 // firebase configuration
 const app = initializeApp({
-  apiKey: "AIzaSyBiG-rX16-ogBD3ILr6NYQ4jdLFVinOptk",
-  authDomain: "zaman-photodiary.firebaseapp.com",
-  projectId: "zaman-photodiary",
-  storageBucket: "zaman-photodiary.appspot.com",
-  messagingSenderId: "424980159648",
-  appId: "1:424980159648:web:91576ccba524ce402e3dc5",
+  apiKey: "AIzaSyC48ZH_qKB49bkGyqR-e4zU4r2MxYqu_ZM",
+  authDomain: "ebachellor.firebaseapp.com",
+  projectId: "ebachellor",
+  storageBucket: "ebachellor.appspot.com",
+  messagingSenderId: "777931771613",
+  appId: "1:777931771613:web:11b0046487ea526f5f5534",
+  measurementId: "G-182G3KF77V",
 });
 
 export default app;
