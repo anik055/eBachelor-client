@@ -48,14 +48,13 @@ const ShowProduct = () => {
       const newCart = [...others, sameProduct];
       setCart(newCart);
 
-      console.log(JSON.stringify(sameProduct));
       fetch(`https://ebachelor.herokuapp.com/updateCart/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(sameProduct),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {})
         .catch((error) => {
           console.error(error);
         });
@@ -87,7 +86,6 @@ const ShowProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCart(data);
       });
   }, [loggedInUser]);

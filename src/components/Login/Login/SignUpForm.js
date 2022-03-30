@@ -31,7 +31,6 @@ export default function SignupForm() {
       storeAuthToken();
       history("../", { replace: true });
     } catch (err) {
-      console.log(err);
       setLoading(false);
       setError("Failed to create an account!");
     }

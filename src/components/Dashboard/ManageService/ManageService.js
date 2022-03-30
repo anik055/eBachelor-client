@@ -17,9 +17,6 @@ const ManageService = ({ product }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data) {
-          console.log(document.getElementById("item"));
-        }
       });
   };
   return (

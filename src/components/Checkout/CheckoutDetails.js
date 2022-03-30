@@ -14,7 +14,6 @@ function CheckoutDetails() {
   const handleBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = e.target.value;
-    console.log(newInfo);
     setInfo(newInfo);
   };
 
@@ -23,7 +22,6 @@ function CheckoutDetails() {
     cart.map((pd) => {
       subtotal = subtotal + pd.price * pd.count;
     });
-    console.log(subtotal);
 
     const submitInfo = { ...info };
     submitInfo["product"] = cart;
@@ -32,8 +30,6 @@ function CheckoutDetails() {
     submitInfo["status"] = "pending";
     submitInfo["subtotal"] = subtotal;
 
-    console.log(submitInfo);
-    console.log(JSON.stringify(submitInfo));
     fetch("https://ebachelor.herokuapp.com/addNewOrder", {
       method: "POST",
       headers: {
@@ -43,14 +39,12 @@ function CheckoutDetails() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         fetch("https://ebachelor.herokuapp.com/deleteWholeCart/", {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             setSuccess(true);
-            console.log(success);
             alert("Success");
           })
           .catch((error) => {});
@@ -67,7 +61,6 @@ function CheckoutDetails() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCart(data);
       });
   }, [loggedInUser]);

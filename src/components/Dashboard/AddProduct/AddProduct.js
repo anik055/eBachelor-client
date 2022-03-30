@@ -7,14 +7,12 @@ const AddProduct = () => {
   const handleBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = e.target.value;
-    console.log(newInfo);
     setInfo(newInfo);
   };
 
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
-    console.log(file);
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +31,6 @@ const AddProduct = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         alert("product added successfully");
         for (let i = 0; i < 5; i++) {
           document.getElementsByClassName("form-control")[i].value = "";

@@ -17,7 +17,6 @@ function IsAdmin() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setIsAdmin(data);
       });
   }, []);

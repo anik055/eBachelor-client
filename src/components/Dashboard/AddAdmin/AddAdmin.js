@@ -6,14 +6,12 @@ const AddAdmin = () => {
   const handleBlur = (e) => {
     const newInfo = { ...info };
     newInfo[e.target.name] = e.target.value;
-    console.log(newInfo);
     setInfo(newInfo);
   };
 
   const handleSubmit = (event) => {
     const formData = new FormData();
     formData.append("email", info.email);
-    console.log(info);
 
     fetch("https://ebachelor.herokuapp.com/addAdmin", {
       method: "POST",
@@ -21,7 +19,6 @@ const AddAdmin = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         alert("admin added successfully");
       })
       .catch((error) => {
@@ -30,7 +27,6 @@ const AddAdmin = () => {
 
     event.preventDefault();
     document.getElementById("input").value = "";
-    console.log(document.getElementById("input").value);
   };
   return (
     <section className="">

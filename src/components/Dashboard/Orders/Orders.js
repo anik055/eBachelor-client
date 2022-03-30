@@ -10,9 +10,8 @@ const Orders = ({ orders, isAdmin }) => {
   const handleBlur = (event, id) => {
     event.target.parentNode.parentNode.previousElementSibling.innerHTML =
       event.target.value;
-    console.log(event.target.parentNode.parentNode.previousElementSibling);
     setStatus(event.target.value);
-    console.log(id);
+
     const statuss = {
       status: event.target.value,
     };
@@ -22,7 +21,7 @@ const Orders = ({ orders, isAdmin }) => {
       body: JSON.stringify(statuss),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {});
   };
   return (
     <div>

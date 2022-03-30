@@ -19,9 +19,8 @@ const Dashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setIsAdmin(data);
-        console.log(isAdmin);
+       setIsAdmin(data);
+
       });
   }, [loggedInUser]);
 
@@ -42,15 +41,12 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
-        console.log(data);
       });
   }, []);
 
   return (
     <div className="dashboard">
       <Sidebar isAdmin={isAdmin}></Sidebar>
-      {console.log(isAdmin)}
-
       <div className="main-dash">
         <div>
           <h1 className="title">Your dashboard</h1>

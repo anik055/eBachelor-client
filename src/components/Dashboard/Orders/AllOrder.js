@@ -9,7 +9,6 @@ const AllOrder = () => {
   const [allOrders, setAllOrders] = useState([]);
   const [userOrders, setUserOrders] = useState([]);
   const { loggedInUser } = useAuth();
-  console.log(loggedInUser);
 
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -21,9 +20,7 @@ const AllOrder = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setIsAdmin(data);
-        console.log(isAdmin);
       });
   }, [loggedInUser]);
 
@@ -44,7 +41,7 @@ const AllOrder = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
-        console.log(data);
+
       });
   }, []);
 
